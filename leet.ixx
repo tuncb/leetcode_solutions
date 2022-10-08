@@ -8,7 +8,7 @@ import algoex;
 namespace leet
 {
 
-export auto leet_1_two_sum(std::vector<int> &nums, int target) -> std::optional<std::vector<int>>
+export auto leet_1_two_sum(const std::vector<int> &nums, int target) -> std::optional<std::vector<int>>
 {
   const auto b = nums.begin();
   auto twins_op = algoex::find_twins(nums.begin(), nums.end(), [target](int value) { return target - value; });
