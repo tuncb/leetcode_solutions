@@ -24,5 +24,11 @@
     <ClCompile Include="algoex.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListNode.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListNodeTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

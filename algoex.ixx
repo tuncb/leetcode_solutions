@@ -28,4 +28,7 @@ auto find_twins(Iter first, Iter last, TwinProvider twin_provider) -> std::optio
   return std::nullopt;
 }
 
+// export template <std::forward_iterator Iter, typename T, class Generator>
+// auto generate
+
 } // namespace algoex

@@ -135,6 +135,8 @@
     <ClCompile Include="algoex.ixx" />
     <ClCompile Include="leetcode_solutions.cpp" />
     <ClCompile Include="leet.ixx" />
+    <ClCompile Include="ListNode.ixx" />
+    <ClCompile Include="ListNodeTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
