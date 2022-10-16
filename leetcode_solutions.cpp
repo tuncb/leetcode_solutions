@@ -16,6 +16,20 @@ TEST_CASE("Leet solution 1", "[leet1]")
   check_solution({3, 3}, 6, {0, 1});
 }
 
+TEST_CASE("Leet solution 2", "[leet2]")
+{
+  const auto check_solution = [](int val1, int val2) {
+    auto node1 = leet::to_node(val1);
+    auto node2 = leet::to_node(val2);
+    auto node = leet::leet_2_add_two_numbers(node1, node2);
+    REQUIRE(val1 + val2 == leet::from_node(node));
+  };
+
+  check_solution(342, 465);
+  check_solution(0, 0);
+  check_solution(9999999, 9999);
+}
+
 int main(int argc, char *argv[])
 {
   Catch::Session session;

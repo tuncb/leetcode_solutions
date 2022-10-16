@@ -28,7 +28,16 @@ auto find_twins(Iter first, Iter last, TwinProvider twin_provider) -> std::optio
   return std::nullopt;
 }
 
-// export template <std::forward_iterator Iter, typename T, class Generator>
-// auto generate
+export template <typename T, std::output_iterator<T> Iter, class Divider>
+auto divide(T &val, Iter iter, Divider divider)
+{
+  auto retop = divider(val);
+  while (retop)
+  {
+    *iter = *retop;
+    ++iter;
+    retop = divider(val);
+  }
+}
 
 } // namespace algoex
