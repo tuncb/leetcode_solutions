@@ -15,19 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="leetcode_solutions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="leet.ixx">
+    <ClCompile Include="testmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="algoex.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListNode.ixx">
+    <ClCompile Include="listnode.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListNodeTests.cpp">
+    <ClCompile Include="listnodetests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="leet2.ixx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="leet1.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

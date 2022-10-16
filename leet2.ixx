@@ -1,29 +1,13 @@
 module;
+#include <catch2/catch_test_macros.hpp>
 #include <numeric>
 #include <optional>
-#include <vector>
-export module leet;
+export module leet2;
 
 import algoex;
 import listnode;
 
-namespace leet
-{
-
-export auto leet_1_two_sum(const std::vector<int> &nums, int target) -> std::optional<std::vector<int>>
-{
-  const auto b = nums.begin();
-  auto twins_op = algoex::find_twins(nums.begin(), nums.end(), [target](int value) { return target - value; });
-  if (twins_op.has_value())
-  {
-    const auto twins = twins_op.value();
-    return std::vector<int>{static_cast<int>(twins.first - b), static_cast<int>(twins.second - b)};
-  }
-  else
-    return std::nullopt;
-}
-
-export auto to_node(int val) -> listnode::ListNode<int>
+auto to_node(int val) -> listnode::ListNode<int>
 {
   using namespace listnode;
   auto node = ListNode<int>(0);
@@ -47,7 +31,7 @@ export auto to_node(int val) -> listnode::ListNode<int>
   return node;
 }
 
-export auto from_node(const listnode::ListNode<int> &node) -> int
+auto from_node(const listnode::ListNode<int> &node) -> int
 {
   using namespace listnode;
   auto base = 1;
@@ -60,11 +44,21 @@ export auto from_node(const listnode::ListNode<int> &node) -> int
   return std::accumulate(begin(node), end(node), 0, sumop);
 }
 
-export auto leet_2_add_two_numbers(const listnode::ListNode<int> &node1, const listnode::ListNode<int> &node2)
+auto leet_2_add_two_numbers(const listnode::ListNode<int> &node1, const listnode::ListNode<int> &node2)
     -> listnode::ListNode<int>
 {
   auto node = to_node(from_node(node1) + from_node(node2));
   return node;
 }
 
-} // namespace leet
+TEST_CASE("Leet solution 2", "[leet2]")
+{
+  const auto check_solution = [](int val1, int val2) {
+    auto node = leet_2_add_two_numbers(to_node(val1), to_node(val2));
+    REQUIRE(val1 + val2 == from_node(node));
+  };
+
+  check_solution(342, 465);
+  check_solution(0, 0);
+  check_solution(9999999, 9999);
+}

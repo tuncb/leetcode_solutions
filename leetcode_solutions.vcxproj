@@ -133,10 +133,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="algoex.ixx" />
-    <ClCompile Include="leetcode_solutions.cpp" />
-    <ClCompile Include="leet.ixx" />
-    <ClCompile Include="ListNode.ixx" />
-    <ClCompile Include="ListNodeTests.cpp" />
+    <ClCompile Include="leet1.ixx" />
+    <ClCompile Include="leet2.ixx" />
+    <ClCompile Include="testmain.cpp" />
+    <ClCompile Include="listnode.ixx" />
+    <ClCompile Include="listnodetests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
