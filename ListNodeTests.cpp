@@ -9,9 +9,12 @@ TEST_CASE("ListNode", "[listnode]")
   using namespace listnode;
   using namespace std;
 
+  auto n = make_node(10);
+  REQUIRE(n.value == 10);
+  REQUIRE(!n.next);
+
   auto vec = std::vector{1, 5, 8};
   auto node = ListNode<int>();
-
   copy(begin(vec), end(vec), back_inserter(node));
 
   REQUIRE(distance(begin(node), end(node)) == vec.size());

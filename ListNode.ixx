@@ -11,22 +11,18 @@ export template <typename T> struct ListNode
 {
   T value;
   std::unique_ptr<ListNode<T>> next;
-  explicit ListNode() : next(nullptr)
-  {
-  }
-  explicit ListNode(T &&x) : value(x), next(nullptr)
-  {
-  }
-  explicit ListNode(T &&x, std::unique_ptr<ListNode<T>> &&next_ptr) : value(std::move(x)), next(std::move(next_ptr))
-  {
-  }
 
   ListNode<T> &operator=(T val)
   {
-    value = val;
+    value = std::move(val);
     return *this;
   }
 };
+
+export template <typename T> auto make_node(T val) -> ListNode<T>
+{
+  return ListNode<T>{.value = val, .next = nullptr};
+}
 
 export template <typename T> struct IteratorBase
 {
