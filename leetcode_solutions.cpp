@@ -19,10 +19,9 @@ TEST_CASE("Leet solution 1", "[leet1]")
 TEST_CASE("Leet solution 2", "[leet2]")
 {
   const auto check_solution = [](int val1, int val2) {
-    auto node1 = leet::to_node(val1);
-    auto node2 = leet::to_node(val2);
-    auto node = leet::leet_2_add_two_numbers(node1, node2);
-    REQUIRE(val1 + val2 == leet::from_node(node));
+    using namespace leet;
+    auto node = leet::leet_2_add_two_numbers(to_node(val1), to_node(val2));
+    REQUIRE(val1 + val2 == from_node(node));
   };
 
   check_solution(342, 465);

@@ -5,7 +5,7 @@ module;
 export module leet;
 
 import algoex;
-import ListNode;
+import listnode;
 
 namespace leet
 {
@@ -47,11 +47,11 @@ export auto to_node(int val) -> listnode::ListNode<int>
   return node;
 }
 
-export auto from_node(listnode::ListNode<int> &node) -> int
+export auto from_node(const listnode::ListNode<int> &node) -> int
 {
   using namespace listnode;
   auto base = 1;
-  auto sumop = [&base](int current, listnode::ListNode<int> &n) -> int {
+  auto sumop = [&base](int current, const listnode::ListNode<int> &n) -> int {
     auto ret = current + n.value * base;
     base = base * 10;
     return ret;
@@ -60,7 +60,7 @@ export auto from_node(listnode::ListNode<int> &node) -> int
   return std::accumulate(begin(node), end(node), 0, sumop);
 }
 
-export auto leet_2_add_two_numbers(listnode::ListNode<int> &node1, listnode::ListNode<int> &node2)
+export auto leet_2_add_two_numbers(const listnode::ListNode<int> &node1, const listnode::ListNode<int> &node2)
     -> listnode::ListNode<int>
 {
   auto node = to_node(from_node(node1) + from_node(node2));
