@@ -135,6 +135,7 @@
     <ClCompile Include="algoex.ixx" />
     <ClCompile Include="leet1.ixx" />
     <ClCompile Include="leet2.ixx" />
+    <ClCompile Include="leet3.ixx" />
     <ClCompile Include="testmain.cpp" />
     <ClCompile Include="listnode.ixx" />
     <ClCompile Include="listnodetests.cpp" />

@@ -1,6 +1,7 @@
 module;
 #include <iterator>
 #include <optional>
+#include <span>
 #include <unordered_map>
 export module algoex;
 
@@ -26,6 +27,21 @@ auto find_twins(Iter first, Iter last, TwinProvider twin_provider) -> std::optio
   }
 
   return std::nullopt;
+}
+
+export template <std::forward_iterator Iter, std::output_iterator<std::span<typename Iter::value_type>> OIter,
+                 class TwinProvider>
+auto find_twin_member_blocks(Iter first, Iter last, OIter oIter, TwinProvider twin_provider) -> void
+{
+  using T = Iter::value_type;
+  auto res = find_twins(first, last, twin_provider);
+  while (res)
+  {
+    *oIter = std::span{first, res.value().second};
+    ++oIter;
+    first = res.value().second;
+    res = find_twins(first, last, twin_provider);
+  }
 }
 
 export template <typename T, std::output_iterator<T> Iter, class Divider>
