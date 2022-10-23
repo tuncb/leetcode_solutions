@@ -33,7 +33,6 @@ export template <std::forward_iterator Iter, std::output_iterator<std::span<type
                  class TwinProvider>
 auto find_twin_member_blocks(Iter first, Iter last, OIter oIter, TwinProvider twin_provider) -> void
 {
-  using T = Iter::value_type;
   auto res = find_twins(first, last, twin_provider);
   while (res)
   {
