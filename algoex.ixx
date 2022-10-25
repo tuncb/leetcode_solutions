@@ -24,7 +24,7 @@ auto find_twins(R range, TwinProvider twin_provider, Proj proj = {})
     if (auto iter = map.find(twin); iter != map.end())
     {
       auto r = std::ranges::subrange(iter->second, first);
-      return r;
+      return std::ranges::ref_view {r};
     }
     else
     {
