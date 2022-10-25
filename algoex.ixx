@@ -1,6 +1,7 @@
 module;
 #include <iterator>
 #include <optional>
+#include <ranges>
 #include <span>
 #include <unordered_map>
 export module algoex;
@@ -8,17 +9,22 @@ export module algoex;
 namespace algoex
 {
 
-export template <std::forward_iterator Iter, class TwinProvider>
-auto find_twins(Iter first, Iter last, TwinProvider twin_provider) -> std::optional<std::pair<Iter, Iter>>
+export template <std::ranges::input_range R, class TwinProvider, class Proj = std::identity>
+auto find_twins(R range, TwinProvider twin_provider, Proj proj = {}) 
+-> std::optional<std::ranges::ref_view<R>>
 {
+  using Iter = std::ranges::iterator_t<R>;
   using T = std::iter_value_t<Iter>;
   std::unordered_map<T, Iter> map;
+  auto first = std::ranges::begin(range);
+  auto last = std::ranges::end(range);
   for (; first != last; ++first)
   {
-    const T twin = twin_provider(*first);
+    const T twin = std::invoke(twin_provider, std::invoke(proj, *first));
     if (auto iter = map.find(twin); iter != map.end())
     {
-      return std::pair<Iter, Iter>{iter->second, first};
+      auto r = std::ranges::subrange(iter->second, first);
+      return r;
     }
     else
     {
@@ -33,13 +39,13 @@ export template <std::forward_iterator Iter, std::output_iterator<std::span<type
                  class TwinProvider>
 auto find_twin_member_blocks(Iter first, Iter last, OIter oIter, TwinProvider twin_provider) -> void
 {
-  auto res = find_twins(first, last, twin_provider);
+  auto res = find_twins(std::ranges::subrange(first, last), twin_provider);
   while (res)
   {
-    *oIter = std::span{first, res.value().second};
+    *oIter = std::span{first, res.value().end()};
     ++oIter;
-    first = res.value().second;
-    res = find_twins(first, last, twin_provider);
+    first = res.value().end();
+    res = find_twins(std::ranges::subrange(first, last), twin_provider);
   }
 }
 
