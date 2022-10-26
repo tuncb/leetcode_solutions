@@ -13,8 +13,8 @@ auto leet_1_two_sum(const std::vector<int> &nums, int target) -> std::optional<s
   if (twins_op.has_value())
   {
     const auto twins = twins_op.value();
-    return std::vector<int>{static_cast<int>(std::ranges::distance(twins.begin(), b)),
-                            static_cast<int>(std::ranges::distance(twins.end(), b))};
+    return std::vector<int>{static_cast<int>(std::distance(b, twins.first)),
+                            static_cast<int>(std::distance(b, twins.second))};
   }
   else
     return std::nullopt;
