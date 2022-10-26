@@ -16,7 +16,7 @@ export auto leet3_max_non_repeating_substr(const std::string_view str) -> size_t
   using namespace algoex;
   std::vector<std::span<const char>> substrings;
 
-  find_twin_member_blocks(std::begin(str), std::end(str), std::back_inserter(substrings), std::identity());
+  find_twin_member_blocks(str, std::back_inserter(substrings), std::identity());
   if (substrings.size() <= 0)
     return 0;
   auto elem = std::max_element(std::begin(substrings), std::end(substrings),
